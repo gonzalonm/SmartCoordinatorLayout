@@ -3,12 +3,13 @@ package com.lalosoft.smartcoordinatorlayout;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lalosoft.smartcoordinatorlayout.components.SmartComponent;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,16 +25,8 @@ public class SmartCoordinatorLayout {
     private FloatingActionButtonListener mFloatingActionButtonListener;
     private ViewGroup rootView;
     private FABType mFabType;
-    private RecyclerView.Adapter mRecyclerViewAdapter;
-    private List<?> mRecyclerViewData;
-    private RecyclerView.ViewHolder mRecyclerViewHolder;
-    private SmartRecyclerAdapterCallback mRecyclerAdapterCallback;
 
-    private RecyclerView mRecyclerView;
-
-    public interface SmartRecyclerAdapterCallback {
-        void onBindSmartViewHolder(RecyclerView.ViewHolder viewHolder, Object data);
-    }
+    private List<SmartComponent> mSmartComponents;
 
     public interface FloatingActionButtonListener {
 
@@ -51,13 +44,12 @@ public class SmartCoordinatorLayout {
         private FloatingActionButtonListener floatingActionButtonListener;
         private ViewGroup viewGroup = null;
         private FABType fabType;
-        private RecyclerView.Adapter recyclerViewAdapter;
-        private List<?> list;
-        private RecyclerView.ViewHolder recyclerViewHolder;
-        private SmartRecyclerAdapterCallback recyclerAdapterCallback;
+
+        private List<SmartComponent> smartComponents;
 
         public Builder(@NonNull Context context) {
             this.context = context;
+            this.smartComponents = new ArrayList<>();
         }
 
         public Builder buildWithView(@NonNull ViewGroup view) {
@@ -81,16 +73,9 @@ public class SmartCoordinatorLayout {
             return this;
         }
 
-        public Builder setRecyclerViewAdapter(@NonNull RecyclerView.Adapter recyclerViewAdapter) {
-            this.recyclerViewAdapter = recyclerViewAdapter;
-            return this;
-        }
 
-        public Builder setRecyclerViewData(@NonNull List<?> list, @NonNull RecyclerView.ViewHolder viewHolder,
-                                           SmartRecyclerAdapterCallback recyclerAdapterCallback) {
-            this.list = list;
-            this.recyclerViewHolder = viewHolder;
-            this.recyclerAdapterCallback = recyclerAdapterCallback;
+        public Builder addSmartComponent(SmartComponent smartComponent) {
+            smartComponents.add(smartComponent);
             return this;
         }
 
@@ -103,10 +88,7 @@ public class SmartCoordinatorLayout {
             smartCoordinatorLayout.mFabType = fabType;
             smartCoordinatorLayout.mFloatingActionButtonListener = floatingActionButtonListener;
             smartCoordinatorLayout.rootView = viewGroup;
-            smartCoordinatorLayout.mRecyclerViewAdapter = recyclerViewAdapter;
-            smartCoordinatorLayout.mRecyclerViewData = list;
-            smartCoordinatorLayout.mRecyclerViewHolder = recyclerViewHolder;
-            smartCoordinatorLayout.mRecyclerAdapterCallback = recyclerAdapterCallback;
+            smartCoordinatorLayout.mSmartComponents = smartComponents;
             return smartCoordinatorLayout;
         }
     }
@@ -115,23 +97,10 @@ public class SmartCoordinatorLayout {
         View view = LayoutInflater.from(mContext).inflate(R.layout.layout_main, rootView);
         mCoordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.coordinator_layout);
 
-        // setup RecyclerView component
-        setupRecyclerView(mCoordinatorLayout);
-    }
-
-    private void setupRecyclerView(View view) {
-        // find view by id
-        mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-
-        if (mRecyclerViewAdapter == null) {
-            // use custom adapter
-            mRecyclerView.setAdapter(new CustomRecyclerViewAdapter(mRecyclerAdapterCallback,
-                    mRecyclerViewData, mRecyclerViewHolder));
-        } else {
-            // use provided adapter
-            mRecyclerView.setAdapter(mRecyclerViewAdapter);
+        // build smart components
+        for (SmartComponent smartComponent : mSmartComponents) {
+            smartComponent.setup(mContext, mCoordinatorLayout);
         }
     }
+
 }
