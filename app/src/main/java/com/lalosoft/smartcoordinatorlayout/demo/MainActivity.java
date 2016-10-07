@@ -4,14 +4,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.lalosoft.smartcoordinatorlayout.SmartCoordinatorLayout;
+import com.lalosoft.smartcoordinatorlayout.components.SmartFloatingActionButton;
 import com.lalosoft.smartcoordinatorlayout.components.SmartRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    private SmartFloatingActionButton.FloatingActionButtonListener fabListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +25,22 @@ public class MainActivity extends AppCompatActivity {
         // bind the root of view of this activity
         ViewGroup rootView = (ViewGroup) findViewById(R.id.activity_main);
 
+        // instances FAB listener
+        fabListener = new SmartFloatingActionButton.FloatingActionButtonListener() {
+            @Override
+            public void onFABPressed() {
+                Toast.makeText(MainActivity.this, "FAB pressed!", Toast.LENGTH_SHORT).show();
+            }
+        };
+
+        CustomSmartRecyclerView smartRecyclerView = new CustomSmartRecyclerView();
+
         // build SmartCoordinatorLayout
         SmartCoordinatorLayout
                 smartCoordinatorLayout = new SmartCoordinatorLayout.Builder(this)
                 .buildWithView(rootView)
-                .addSmartComponent(new CustomSmartRecyclerView()) // Add SmartRecyclerView
-                .useFloatingActionButton(SmartCoordinatorLayout.FABType.NONE)
+                .addSmartComponent(smartRecyclerView) // Add SmartRecyclerView
+                .addSmartComponent(new SmartFloatingActionButton(fabListener))
                 .build();
 
         smartCoordinatorLayout.setup();
