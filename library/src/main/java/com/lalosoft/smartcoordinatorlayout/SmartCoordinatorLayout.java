@@ -22,28 +22,16 @@ public class SmartCoordinatorLayout {
 
     // Vars from Builder
     private Context mContext;
-    private FloatingActionButtonListener mFloatingActionButtonListener;
     private ViewGroup rootView;
-    private FABType mFabType;
 
     private List<SmartComponent> mSmartComponents;
-
-    public interface FloatingActionButtonListener {
-
-    }
-
-    public enum FABType {
-        NONE, ADD, EDIT
-    }
 
     /**
      * Builder class for create an instance of SmartCoordinatorLayout
      */
     public static class Builder {
         private Context context;
-        private FloatingActionButtonListener floatingActionButtonListener;
         private ViewGroup viewGroup = null;
-        private FABType fabType;
 
         private List<SmartComponent> smartComponents;
 
@@ -57,23 +45,6 @@ public class SmartCoordinatorLayout {
             return this;
         }
 
-        public Builder setFABListener(FloatingActionButtonListener fabListener) {
-            this.floatingActionButtonListener = fabListener;
-            return this;
-        }
-
-        /**
-         * Instances FloatingActionButton
-         *
-         * @param fabType FloatingActionButton types: NONE, ADD, EDIT
-         * @return Builder
-         */
-        public Builder useFloatingActionButton(@NonNull FABType fabType) {
-            this.fabType = fabType;
-            return this;
-        }
-
-
         public Builder addSmartComponent(SmartComponent smartComponent) {
             smartComponents.add(smartComponent);
             return this;
@@ -85,8 +56,6 @@ public class SmartCoordinatorLayout {
             }
             SmartCoordinatorLayout smartCoordinatorLayout = new SmartCoordinatorLayout();
             smartCoordinatorLayout.mContext = this.context;
-            smartCoordinatorLayout.mFabType = fabType;
-            smartCoordinatorLayout.mFloatingActionButtonListener = floatingActionButtonListener;
             smartCoordinatorLayout.rootView = viewGroup;
             smartCoordinatorLayout.mSmartComponents = smartComponents;
             return smartCoordinatorLayout;
@@ -99,7 +68,8 @@ public class SmartCoordinatorLayout {
 
         // build smart components
         for (SmartComponent smartComponent : mSmartComponents) {
-            smartComponent.setup(mContext, mCoordinatorLayout);
+            View generatedView = smartComponent.setup(mContext, mCoordinatorLayout);
+            mCoordinatorLayout.addView(generatedView);
         }
     }
 
