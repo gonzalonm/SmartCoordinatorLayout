@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.lalosoft.smartcoordinatorlayout.SmartCoordinatorLayout;
-import com.lalosoft.smartcoordinatorlayout.components.SmartFloatingActionButton;
-import com.lalosoft.smartcoordinatorlayout.components.SmartRecyclerView;
+import com.lalosoft.smartcoordinatorlayout.components.fab.SmartFloatingActionButton;
+import com.lalosoft.smartcoordinatorlayout.components.recyclerview.SmartRecyclerView;
+import com.lalosoft.smartcoordinatorlayout.components.tablayout.SmartFragmentTab;
+import com.lalosoft.smartcoordinatorlayout.components.tablayout.SmartFragmentTabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +37,18 @@ public class MainActivity extends AppCompatActivity {
 
         CustomSmartRecyclerView smartRecyclerView = new CustomSmartRecyclerView();
 
+        SmartFragmentTabLayout smartFragmentTabLayout = new SmartFragmentTabLayout(getSupportFragmentManager());
+        smartFragmentTabLayout.addTab(new SmartFragmentTab("TAB1", TabFragment.newInstance("Tab 1")));
+        smartFragmentTabLayout.addTab(new SmartFragmentTab("TAB2", TabFragment.newInstance("Tab 2")));
+        smartFragmentTabLayout.addTab(new SmartFragmentTab("TAB3", TabFragment.newInstance("Tab 3")));
+
         // build SmartCoordinatorLayout
         SmartCoordinatorLayout
                 smartCoordinatorLayout = new SmartCoordinatorLayout.Builder(this)
                 .buildWithView(rootView)
-                .addSmartComponent(smartRecyclerView) // Add SmartRecyclerView
-                .addSmartComponent(new SmartFloatingActionButton(fabListener))
+                //.addSmartComponent(smartRecyclerView) // Add SmartRecyclerView
+                //.addSmartComponent(new SmartFloatingActionButton(fabListener))
+                .addSmartComponent(smartFragmentTabLayout)
                 .build();
 
         smartCoordinatorLayout.setup();
