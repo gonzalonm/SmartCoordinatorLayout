@@ -1,4 +1,4 @@
-package com.lalosoft.smartcoordinatorlayout.components;
+package com.lalosoft.smartcoordinatorlayout.components.fab;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lalosoft.smartcoordinatorlayout.R;
+import com.lalosoft.smartcoordinatorlayout.components.BaseSmartComponent;
+import com.lalosoft.smartcoordinatorlayout.components.SmartComponent;
 
 /**
  * Created by Gonzalo.Martin on 10/6/2016

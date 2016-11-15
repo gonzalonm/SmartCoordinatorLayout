@@ -6,6 +6,6 @@ import android.content.Context;
  * Created by Gonzalo.Martin on 10/6/2016
  */
 
-public abstract class BaseSmartComponent {
+public abstract class BaseSmartComponent implements SmartComponent {
     protected Context mContext;
 }

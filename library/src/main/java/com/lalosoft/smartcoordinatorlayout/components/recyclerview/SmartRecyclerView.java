@@ -1,4 +1,4 @@
-package com.lalosoft.smartcoordinatorlayout.components;
+package com.lalosoft.smartcoordinatorlayout.components.recyclerview;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
@@ -6,7 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lalosoft.smartcoordinatorlayout.itemdecoration.DividerItemDecoration;
+import com.lalosoft.smartcoordinatorlayout.components.BaseSmartComponent;
+import com.lalosoft.smartcoordinatorlayout.components.SmartComponent;
 
 /**
  * Created by Gonzalo.Martin on 10/6/2016

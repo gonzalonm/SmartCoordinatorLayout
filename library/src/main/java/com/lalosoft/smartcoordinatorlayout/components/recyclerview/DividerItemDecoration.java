@@ -1,4 +1,4 @@
-package com.lalosoft.smartcoordinatorlayout.itemdecoration;
+package com.lalosoft.smartcoordinatorlayout.components.recyclerview;
 
 /*
  * Copyright (C) 2014 The Android Open Source Project
