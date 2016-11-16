@@ -2,7 +2,37 @@
 
 [![CircleCI](https://circleci.com/gh/lalosoft/SmartCoordinatorLayout/tree/master.svg?style=shield)](https://circleci.com/gh/lalosoft/SmartCoordinatorLayout/tree/master)
 
+##Installation
 
+###Gradle
+
+Add the following lines on your module's build.gradle file
+```gradle
+repositories {
+    maven {
+        url 'https://dl.bintray.com/lalosoft/android-utilities/'
+    }
+}
+...
+compile 'lalosoft.android-utilities:smartcoordinatorlayout:1.0.5'
+```
+
+
+###Maven
+```xml
+<dependency>
+  <groupId>lalosoft.android-utilities</groupId>
+  <artifactId>smartcoordinatorlayout</artifactId>
+  <version>1.0.5</version>
+  <type>pom</type>
+</dependency>
+```
+
+##Usage
+
+TBD
+
+##License
     Copyright 2016 SmartCoordinatorLayout
 
     Licensed under the Apache License, Version 2.0 (the "License");
