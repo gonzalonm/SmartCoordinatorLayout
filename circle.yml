@@ -16,4 +16,4 @@ dependencies:
 
 test:
   override:
-    ./gradlew compileDebugSources
+    - ./gradlew compileDebugSources
