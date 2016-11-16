@@ -1,4 +1,4 @@
-package com.lalosoft.smartcoordinatorlayout.demo;
+package com.lalosoft.smartcoordinatorlayout.demo.simple;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,15 +12,21 @@ import android.widget.TextView;
 
 import com.lalosoft.smartcoordinatorlayout.SmartCoordinatorLayout;
 import com.lalosoft.smartcoordinatorlayout.components.recyclerview.SmartRecyclerView;
-import com.lalosoft.smartcoordinatorlayout.demo.simple.SimpleSmartComponentsActivity;
+import com.lalosoft.smartcoordinatorlayout.demo.OnItemSelectedListener;
+import com.lalosoft.smartcoordinatorlayout.demo.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by Gonzalo.Martin on 11/16/2016
+ */
 
-    private static final int ITEM_SIMPLE_SMART_COMPONENTS = 0;
-    private static final int ITEM_COMPLEX_SMART_COMPONENTS = 1;
+public class SimpleSmartComponentsActivity extends AppCompatActivity {
+
+    private static final int ITEM_RECYCLER_VIEW = 0;
+    private static final int ITEM_FAB = 1;
+    private static final int ITEM_TAB_LAYOUT = 2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -28,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(R.string.app_name);
+            getSupportActionBar().setTitle(R.string.simple_smart_components);
         }
 
         // bind the root of view of this activity
@@ -48,8 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
     private List<String> createStringList() {
         List<String> list = new ArrayList<>();
-        list.add(getString(R.string.simple_smart_components));
-        list.add(getString(R.string.complex_smart_components));
+        list.add(getString(R.string.simple_smart_recycler_view));
+        list.add(getString(R.string.simple_smart_floating_action_button));
+        list.add(getString(R.string.simple_smart_tab_layout));
         return list;
     }
 
@@ -61,15 +68,18 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected RecyclerView.Adapter provideAdapter() {
-            return new MainAdapter(createStringList(), new OnItemSelectedListener() {
+            return new SimpleSmartComponentsAdapter(createStringList(), new OnItemSelectedListener() {
                 @Override
                 public void onItemClick(int position) {
                     switch (position) {
-                        case ITEM_SIMPLE_SMART_COMPONENTS:
-                            openActivity(SimpleSmartComponentsActivity.class);
+                        case ITEM_RECYCLER_VIEW:
+                            openActivity(SimpleSmartRecyclerViewActivity.class);
                             break;
-                        case ITEM_COMPLEX_SMART_COMPONENTS:
-                            // TODO
+                        case ITEM_FAB:
+                            openActivity(SimpleSmartFABActivity.class);
+                            break;
+                        case ITEM_TAB_LAYOUT:
+                            openActivity(SimpleSmartTabLayoutActivity.class);
                             break;
                     }
                 }
@@ -77,24 +87,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder> {
+    private class SimpleSmartComponentsAdapter extends RecyclerView.Adapter<SimpleSmartComponentsAdapter.SimpleViewHolder> {
 
         private final OnItemSelectedListener listener;
         private List<String> list;
 
-        public MainAdapter(List<String> list, OnItemSelectedListener listener) {
+        public SimpleSmartComponentsAdapter(List<String> list, OnItemSelectedListener listener) {
             this.list = list;
             this.listener = listener;
         }
 
         @Override
-        public MainAdapter.MainViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(MainActivity.this).inflate(R.layout.view_item, parent, false);
-            return new MainAdapter.MainViewHolder(view);
+        public SimpleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(SimpleSmartComponentsActivity.this).inflate(R.layout.view_item, parent, false);
+            return new SimpleViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(final MainAdapter.MainViewHolder holder, int position) {
+        public void onBindViewHolder(final SimpleViewHolder holder, int position) {
             holder.text.setText(list.get(position));
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -109,13 +119,14 @@ public class MainActivity extends AppCompatActivity {
             return list.size();
         }
 
-        public class MainViewHolder extends RecyclerView.ViewHolder {
+        public class SimpleViewHolder extends RecyclerView.ViewHolder {
             TextView text;
 
-            public MainViewHolder(View itemView) {
+            public SimpleViewHolder(View itemView) {
                 super(itemView);
                 text = (TextView) itemView.findViewById(R.id.item_text);
             }
         }
     }
+
 }

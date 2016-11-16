@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SmartCoordinatorLayout</string>
+    <string name="simple_smart_recycler_view">SimpleSmartRecyclerView</string>
+    <string name="simple_smart_floating_action_button">SimpleSmartFloatingActionButton</string>
+    <string name="simple_smart_tab_layout">Simple SmartTabLayout (with ViewPager)</string>
+    <string name="simple_smart_components">SimpleSmartComponents</string>
+    <string name="fab_pressed">FAB pressed!</string>
+    <string name="complex_smart_components">ComplexSmartComponents</string>
 </resources>
