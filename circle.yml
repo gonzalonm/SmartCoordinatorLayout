@@ -16,4 +16,5 @@ dependencies:
 
 test:
   override:
+    - chmod 777 gradlew
     - ./gradlew compileDebugSources
