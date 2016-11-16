@@ -1,7 +1,7 @@
 general:
   branches:
     only:
-      - develop
+      - master
 
 machine:
   environment:
@@ -15,31 +15,5 @@ dependencies:
     - echo y | android update sdk --no-ui --all --filter build-tools-24.0.2
 
 test:
-  pre:
-    # start the emulator
-    #- emulator -avd circleci-android22 -no-audio -no-window:
-    #    background: true
-    #    parallel: true
   override:
-    - >
-      if [ "${CIRCLE_BRANCH}" = "develop" ]; then
-        # Run unit tests for app module
-        ./gradlew :app:testDebugUnitTest;
-        # copy the test results to the test results directory.
-        mkdir -p $CIRCLE_TEST_REPORTS/junit
-        cp -r app/build/reports/tests/debug/* $CIRCLE_TEST_REPORTS/junit
-        # Compile debug
-        ./gradlew compileDebugSources
-      fi
-    - >
-      if [ "${CIRCLE_BRANCH}" = "beta" ]; then
-        # download the keystore
-        wget $KEYSTORE_FILE_URL -O app/$KEYSTORE_FILE_NAME
-
-        # Generate the beta apk
-        ./gradlew assembleBeta -PdisablePreDex -PbuildNum=$CIRCLE_BUILD_NUM -PkeystoreFile=$KEYSTORE_FILE_NAME -PkeystorePassword=$KEYSTORE_PASSWORD -PkeystoreAlias=$KEYSTORE_ALIAS -PkeystoreAliasPassword=$KEYSTORE_ALIAS_PASSWORD;
-      fi
-    - >
-      if [ "${CIRCLE_BRANCH}" = "master" ]; then
-        # download the keystore
-      fi
+    ./gradlew compileDebugSources
