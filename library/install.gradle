@@ -1,0 +1,39 @@
+apply plugin: 'com.github.dcendents.android-maven'
+
+// If your directory matches the name, you do not need to set archivesBaseName.
+archivesBaseName = "smartcoordinatorlayout"
+
+group = "lalosoft.android-utilities"
+
+def siteUrl = 'https://github.com/lalosoft/SmartCoordinatorLayout'      // Homepage URL of the library
+def gitUrl = 'https://github.com/lalosoft/SmartCoordinatorLayout.git'   // Git repository URL
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            packaging 'aar'
+
+            name 'SmartCoordinatorLayout' // YOUR LIBRARY NAME
+            url siteUrl // YOUR SITE
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                }
+            }
+            developers {
+                developer {
+                    id 'lalosoft' //YOUR ID
+                    name 'Gonzalo Martin' //YOUR NAME
+                    email 'lalosoft@gmail.com' //YOUR EMAIL
+                }
+            }
+            scm {
+                connection gitUrl // YOUR GIT REPO
+                developerConnection gitUrl // YOUR GIT REPO
+                url siteUrl // YOUR SITE
+            }
+        }
+    }
+}
