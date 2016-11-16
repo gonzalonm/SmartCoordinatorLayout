@@ -1,4 +1,4 @@
-###SmartCoordinatorLayout
+#SmartCoordinatorLayout
 
 [![CircleCI](https://circleci.com/gh/lalosoft/SmartCoordinatorLayout/tree/master.svg?style=shield)](https://circleci.com/gh/lalosoft/SmartCoordinatorLayout/tree/master)
 
