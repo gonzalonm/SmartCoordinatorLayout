@@ -11,10 +11,14 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".simple.SimpleSmartTabLayoutActivity" />
+        <activity android:name=".simple.SimpleSmartRecyclerViewActivity" />
+        <activity android:name=".simple.SimpleSmartComponentsActivity" />
+        <activity android:name=".simple.SimpleSmartFABActivity" />
     </application>
 
 </manifest>

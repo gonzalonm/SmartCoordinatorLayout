@@ -21,8 +21,10 @@ public abstract class SmartRecyclerView extends BaseSmartComponent implements Sm
     public View setup(Context context, ViewGroup view) {
         mContext = context;
 
-        // find view by id
+        // setup recycler view
         RecyclerView mRecyclerView = new RecyclerView(context);
+        mRecyclerView.setLayoutParams(new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
         mRecyclerView.setHasFixedSize(true);
 
         // add item decoration
