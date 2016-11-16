@@ -9,8 +9,11 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 bintray {
-    user = properties.getProperty("bintray.user")
-    key = properties.getProperty("bintray.apikey")
+    //user = properties.getProperty("bintray.user")
+    //key = properties.getProperty("bintray.apikey")
+    user = properties.hasProperty('bintray.user') ? properties.property('bintray.user') : 'test'
+    key = properties.hasProperty('bintray.apikey') ? properties.property('bintray.apikey') : 'test'
+
     // jFrog plugin must be declared for this line to work
     configurations = ['archives']
     // Package info for BinTray
