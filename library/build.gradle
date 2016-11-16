@@ -3,7 +3,7 @@ apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
 // This is the library version used when deploying the artifact
-version = "1.0.1"
+version = "1.0.2"
 
 android {
     compileSdkVersion 24
@@ -45,7 +45,7 @@ archivesBaseName = "smartcoordinatorlayout"
 
 def siteUrl = 'https://github.com/lalosoft/SmartCoordinatorLayout'      // Homepage URL of the library
 def gitUrl = 'https://github.com/lalosoft/SmartCoordinatorLayout.git'   // Git repository URL
-group = "lalosoft.android-utilities"
+group = "com.lalosoft.android-utilities"
 
 install {
     repositories.mavenInstaller {
