@@ -8,12 +8,6 @@
 
 Add the following lines on your module's build.gradle file
 ```gradle
-repositories {
-    maven {
-        url 'https://dl.bintray.com/lalosoft/android-utilities/'
-    }
-}
-...
 compile 'lalosoft.android-utilities:smartcoordinatorlayout:1.0.5'
 ```
 
