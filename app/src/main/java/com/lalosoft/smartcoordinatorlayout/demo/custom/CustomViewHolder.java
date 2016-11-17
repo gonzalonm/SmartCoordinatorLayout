@@ -1,4 +1,4 @@
-package com.lalosoft.smartcoordinatorlayout.demo.adapter;
+package com.lalosoft.smartcoordinatorlayout.demo.custom;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

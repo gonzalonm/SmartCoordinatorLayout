@@ -6,4 +6,5 @@
     <string name="simple_smart_components">SimpleSmartComponents</string>
     <string name="fab_pressed">FAB pressed!</string>
     <string name="complex_smart_components">ComplexSmartComponents</string>
+    <string name="complex_smart_recycler_fab">SmartRecyclerWithFAB</string>
 </resources>
