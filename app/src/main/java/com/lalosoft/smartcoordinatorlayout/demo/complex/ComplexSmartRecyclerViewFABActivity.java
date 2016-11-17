@@ -1,6 +1,5 @@
-package com.lalosoft.smartcoordinatorlayout.demo.simple;
+package com.lalosoft.smartcoordinatorlayout.demo.complex;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -16,22 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Gonzalo.Martin on 11/16/2016
+ * Created by Gonzalo.Martin on 11/17/2016
  */
-
-public class SimpleSmartComponentsActivity extends AppCompatActivity {
-
-    private static final int ITEM_RECYCLER_VIEW = 0;
-    private static final int ITEM_FAB = 1;
-    private static final int ITEM_TAB_LAYOUT = 2;
+public class ComplexSmartRecyclerViewFABActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_base);
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(R.string.simple_smart_components);
+            getSupportActionBar().setTitle(R.string.complex_smart_recycler_fab);
         }
 
         // bind the root of view of this activity
@@ -41,17 +34,7 @@ public class SimpleSmartComponentsActivity extends AppCompatActivity {
                 createStringList(), new OnItemSelectedListener() {
             @Override
             public void onItemClick(int position) {
-                switch (position) {
-                    case ITEM_RECYCLER_VIEW:
-                        openActivity(SimpleSmartRecyclerViewActivity.class);
-                        break;
-                    case ITEM_FAB:
-                        openActivity(SimpleSmartFABActivity.class);
-                        break;
-                    case ITEM_TAB_LAYOUT:
-                        openActivity(SimpleSmartTabLayoutActivity.class);
-                        break;
-                }
+
             }
         }));
 
@@ -72,9 +55,4 @@ public class SimpleSmartComponentsActivity extends AppCompatActivity {
         list.add(getString(R.string.simple_smart_tab_layout));
         return list;
     }
-
-    private void openActivity(Class activity) {
-        startActivity(new Intent(this, activity));
-    }
-
 }

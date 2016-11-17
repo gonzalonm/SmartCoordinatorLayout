@@ -2,13 +2,14 @@ package com.lalosoft.smartcoordinatorlayout.demo.simple;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.lalosoft.smartcoordinatorlayout.SmartCoordinatorLayout;
-import com.lalosoft.smartcoordinatorlayout.components.recyclerview.SmartRecyclerView;
-import com.lalosoft.smartcoordinatorlayout.demo.adapter.CustomAdapter;
+import com.lalosoft.smartcoordinatorlayout.demo.custom.CustomSmartRecyclerView;
+import com.lalosoft.smartcoordinatorlayout.demo.OnItemSelectedListener;
 import com.lalosoft.smartcoordinatorlayout.demo.R;
+import com.lalosoft.smartcoordinatorlayout.demo.custom.CustomAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,13 @@ public class SimpleSmartRecyclerViewActivity extends AppCompatActivity {
         // bind the root of view of this activity
         ViewGroup rootView = (ViewGroup) findViewById(R.id.activity_base_root);
 
-        CustomSmartRecyclerView smartRecyclerView = new CustomSmartRecyclerView();
+        CustomSmartRecyclerView smartRecyclerView = new CustomSmartRecyclerView(new CustomAdapter(this,
+                createStringList(), new OnItemSelectedListener() {
+            @Override
+            public void onItemClick(int position) {
+                Toast.makeText(SimpleSmartRecyclerViewActivity.this, "Item #" + position, Toast.LENGTH_SHORT).show();
+            }
+        }));
 
         // build SmartCoordinatorLayout
         SmartCoordinatorLayout
@@ -48,14 +55,6 @@ public class SimpleSmartRecyclerViewActivity extends AppCompatActivity {
             list.add("Item #" + i);
         }
         return list;
-    }
-
-    private class CustomSmartRecyclerView extends SmartRecyclerView {
-
-        @Override
-        protected RecyclerView.Adapter provideAdapter() {
-            return new CustomAdapter(SimpleSmartRecyclerViewActivity.this, createStringList());
-        }
     }
 
 }

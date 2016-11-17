@@ -1,11 +1,11 @@
-package com.lalosoft.smartcoordinatorlayout.demo.adapter;
+package com.lalosoft.smartcoordinatorlayout.demo.custom;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lalosoft.smartcoordinatorlayout.demo.OnItemSelectedListener;
 import com.lalosoft.smartcoordinatorlayout.demo.R;
 
 import java.util.List;
@@ -14,12 +14,13 @@ import java.util.List;
  * Created by Gonzalo.Martin on 10/6/2016
  */
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
+public class CustomAdapter extends BaseCustomAdapter<CustomViewHolder> {
 
     private final Context context;
     private List<String> list;
 
-    public CustomAdapter(Context context, List<String> list) {
+    public CustomAdapter(Context context, List<String> list, OnItemSelectedListener listener) {
+        super(listener);
         this.context = context;
         this.list = list;
     }
@@ -31,8 +32,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(CustomViewHolder holder, int position) {
+    public void onBindViewHolder(final CustomViewHolder holder, int position) {
         holder.text.setText(list.get(position));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onItemClick(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override

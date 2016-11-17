@@ -1,4 +1,4 @@
-package com.lalosoft.smartcoordinatorlayout.demo.simple;
+package com.lalosoft.smartcoordinatorlayout.demo.complex;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,17 +11,19 @@ import com.lalosoft.smartcoordinatorlayout.demo.custom.CustomSmartRecyclerView;
 import com.lalosoft.smartcoordinatorlayout.demo.OnItemSelectedListener;
 import com.lalosoft.smartcoordinatorlayout.demo.R;
 import com.lalosoft.smartcoordinatorlayout.demo.custom.CustomAdapter;
+import com.lalosoft.smartcoordinatorlayout.demo.simple.SimpleSmartFABActivity;
+import com.lalosoft.smartcoordinatorlayout.demo.simple.SimpleSmartTabLayoutActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Gonzalo.Martin on 11/16/2016
+ * Created by Gonzalo.Martin on 11/17/2016
  */
 
-public class SimpleSmartComponentsActivity extends AppCompatActivity {
+public class ComplexSmartComponentsActivity extends AppCompatActivity {
 
-    private static final int ITEM_RECYCLER_VIEW = 0;
+    private static final int ITEM_RECYCLER_VIEW_FAB = 0;
     private static final int ITEM_FAB = 1;
     private static final int ITEM_TAB_LAYOUT = 2;
 
@@ -42,8 +44,8 @@ public class SimpleSmartComponentsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(int position) {
                 switch (position) {
-                    case ITEM_RECYCLER_VIEW:
-                        openActivity(SimpleSmartRecyclerViewActivity.class);
+                    case ITEM_RECYCLER_VIEW_FAB:
+                        openActivity(ComplexSmartRecyclerViewFABActivity.class);
                         break;
                     case ITEM_FAB:
                         openActivity(SimpleSmartFABActivity.class);
