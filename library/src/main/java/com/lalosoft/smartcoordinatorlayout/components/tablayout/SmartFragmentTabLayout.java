@@ -27,6 +27,10 @@ public class SmartFragmentTabLayout extends BaseSmartComponent {
     private List<SmartFragmentTab> tabs;
     private FrameLayout frameLayout;
 
+    /**
+     * Constructor of SmartFragmentTabLayout
+     * @param fragmentManager {@link FragmentManager}
+     */
     public SmartFragmentTabLayout(FragmentManager fragmentManager) {
         this.tabs = new ArrayList<>();
         this.fm = fragmentManager;
@@ -70,6 +74,10 @@ public class SmartFragmentTabLayout extends BaseSmartComponent {
         return linearLayout;
     }
 
+    /**
+     * Adds a new {@link SmartFragmentTab} to {@link TabLayout}
+     * @param smartFragmentTab
+     */
     public void addTab(SmartFragmentTab smartFragmentTab) {
         tabs.add(smartFragmentTab);
     }

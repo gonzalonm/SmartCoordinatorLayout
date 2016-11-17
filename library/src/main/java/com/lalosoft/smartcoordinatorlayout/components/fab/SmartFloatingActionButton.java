@@ -48,25 +48,53 @@ public class SmartFloatingActionButton extends BaseSmartComponent implements Sma
         void onFABPressed();
     }
 
+    /**
+     * Constructor of SmartFloatingActionButton
+     * @param fabType the type of FAB (use {@link FABType})
+     * @param fabPosition the position of FAB in the screen (use {@link FABPosition}
+     * @param listener the listener for the button
+     */
     public SmartFloatingActionButton(FABType fabType, FABPosition fabPosition, FloatingActionButtonListener listener) {
         this.mFabType = fabType;
         this.mFabPosition = fabPosition;
         this.mListener = listener;
     }
 
+    /**
+     * Constructor of SmartFloatingActionButton
+     * @param fabType the type of FAB (use {@link FABPosition})
+     * @param listener the listener for the button
+     */
     public SmartFloatingActionButton(FABType fabType, FloatingActionButtonListener listener) {
         this(fabType, DEFAULT_FAB_POSITION, listener);
     }
 
+    /**
+     * Constructor of SmartFloatingActionButton
+     * * Using default {@link FABType}
+     * @param fabPosition the position of FAB in the screen (use {@link FABPosition}
+     * @param listener the listener for the button
+     */
     public SmartFloatingActionButton(FABPosition fabPosition, FloatingActionButtonListener listener) {
         this(DEFAULT_FAB_TYPE, fabPosition, listener);
     }
 
+    /**
+     * Constructor of SmartFloatingActionButton
+     * * Using default {@link FABPosition}
+     * @param customDrawableFABIcon {@link Drawable} instance of the icon
+     * @param listener the listener for the button
+     */
     public SmartFloatingActionButton(Drawable customDrawableFABIcon, FloatingActionButtonListener listener) {
         this(null, DEFAULT_FAB_POSITION, listener);
         mCustomDrawableFABIcon = customDrawableFABIcon;
     }
 
+    /**
+     * Constructor of SmartFloatingActionButton
+     * Using default {@link FABType} and {@link FABPosition}
+     * @param listener the listener for the button
+     */
     public SmartFloatingActionButton(FloatingActionButtonListener listener) {
         this(DEFAULT_FAB_TYPE, DEFAULT_FAB_POSITION, listener);
     }
@@ -105,6 +133,11 @@ public class SmartFloatingActionButton extends BaseSmartComponent implements Sma
         return fab;
     }
 
+    /**
+     * Resolves the gravity based on {@link FABPosition} provided
+     * @param position of the button. Use {@link FABPosition}
+     * @return the computed gravity
+     */
     private int resolveGravity(FABPosition position) {
         switch (position) {
             case BOTTOM_RIGHT:
@@ -120,6 +153,10 @@ public class SmartFloatingActionButton extends BaseSmartComponent implements Sma
         }
     }
 
+    /**
+     *  Add the FAB icon based on {@link FABType}
+     * @param fab an instance of {@link FloatingActionButton}
+     */
     private void applyFabIcon(FloatingActionButton fab) {
         switch (mFabType) {
             case ADD:

@@ -45,7 +45,7 @@ public class SmartCoordinatorLayout {
             return this;
         }
 
-        public Builder addSmartComponent(SmartComponent smartComponent) {
+        public Builder addSmartComponent(@NonNull SmartComponent smartComponent) {
             smartComponents.add(smartComponent);
             return this;
         }
@@ -62,6 +62,9 @@ public class SmartCoordinatorLayout {
         }
     }
 
+    /**
+     * Starts to add sub-components in order to draw the expected view inside of CoordinatorLayout component
+     */
     public void setup() {
         View view = LayoutInflater.from(mContext).inflate(R.layout.layout_main, rootView);
         mCoordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.coordinator_layout);

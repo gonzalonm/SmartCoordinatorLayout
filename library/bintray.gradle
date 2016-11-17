@@ -1,13 +1,16 @@
 apply plugin: 'com.jfrog.bintray'
 
-version = '1.0.5' //YOUR LIBRARY VERSION
+version = '1.0.6' //YOUR LIBRARY VERSION
 
 def siteUrl = 'https://github.com/lalosoft/SmartCoordinatorLayout'      // Homepage URL of the library
 def gitUrl = 'https://github.com/lalosoft/SmartCoordinatorLayout.git'   // Git repository URL
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('bintray.properties').newDataInputStream())
+
 bintray {
-    user = project.hasProperty('bintray.user') ? project.property('bintray.user') : 'user'
-    key = project.hasProperty('bintray.apikey') ? project.property('bintray.apikey') : 'key'
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
 
     // jFrog plugin must be declared for this line to work
     configurations = ['archives']

@@ -8,7 +8,7 @@
 
 Add the following lines on your module's build.gradle file
 ```gradle
-compile 'lalosoft.android-utilities:smartcoordinatorlayout:1.0.5'
+compile 'lalosoft.android-utilities:smartcoordinatorlayout:1.0.6'
 ```
 
 
@@ -17,7 +17,7 @@ compile 'lalosoft.android-utilities:smartcoordinatorlayout:1.0.5'
 <dependency>
   <groupId>lalosoft.android-utilities</groupId>
   <artifactId>smartcoordinatorlayout</artifactId>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
   <type>pom</type>
 </dependency>
 ```
