@@ -24,7 +24,93 @@ compile 'lalosoft.android-utilities:smartcoordinatorlayout:1.0.6'
 
 ##Usage
 
-TBD
+For build SmartCoordinatorLayout, you need to provide a root id of your view. Something like this:
+
+```java
+ViewGroup rootView = (ViewGroup) findViewById(R.id.activity_base_root);
+```
+
+###Simple Usage
+
+Build a [Simple RecyclerView](https://github.com/lalosoft/SmartCoordinatorLayout/blob/master/app/src/main/java/com/lalosoft/smartcoordinatorlayout/demo/simple/SimpleSmartRecyclerViewActivity.java)
+
+```java
+        CustomSmartRecyclerView smartRecyclerView = new CustomSmartRecyclerView(new CustomAdapter(this,
+                createStringList(), new OnItemSelectedListener() {
+            @Override
+            public void onItemClick(int position) {
+                // Handle the item click
+            }
+        }));
+
+        // build SmartCoordinatorLayout
+        SmartCoordinatorLayout
+                smartCoordinatorLayout = new SmartCoordinatorLayout.Builder(this)
+                .buildWithView(rootView)
+                .addSmartComponent(smartRecyclerView)
+                .build();
+
+        smartCoordinatorLayout.setup();
+```
+
+---
+
+Build a [Simple FAB](https://github.com/lalosoft/SmartCoordinatorLayout/blob/master/app/src/main/java/com/lalosoft/smartcoordinatorlayout/demo/simple/SimpleSmartFABActivity.java)
+
+```java
+        // instances FAB listener
+        SmartFloatingActionButton.FloatingActionButtonListener fabListener = new SmartFloatingActionButton.FloatingActionButtonListener() {
+            @Override
+            public void onFABPressed() {
+                // Handle the FAB click
+            }
+        };
+
+        // build SmartCoordinatorLayout
+        SmartCoordinatorLayout
+                smartCoordinatorLayout = new SmartCoordinatorLayout.Builder(this)
+                .buildWithView(rootView)
+                .addSmartComponent(new SmartFloatingActionButton(fabListener))
+                .build();
+
+        smartCoordinatorLayout.setup();
+```
+
+---
+
+Build a [Simple TabLayout](https://github.com/lalosoft/SmartCoordinatorLayout/blob/master/app/src/main/java/com/lalosoft/smartcoordinatorlayout/demo/simple/SimpleSmartTabLayoutActivity.java)
+
+```java
+        SmartFragmentTabLayout smartFragmentTabLayout = new SmartFragmentTabLayout(getSupportFragmentManager());
+        smartFragmentTabLayout.addTab(new SmartFragmentTab("TAB1", fragment1));
+        smartFragmentTabLayout.addTab(new SmartFragmentTab("TAB2", fragment2));
+        smartFragmentTabLayout.addTab(new SmartFragmentTab("TAB3", fragment3));
+
+        // build SmartCoordinatorLayout
+        SmartCoordinatorLayout
+                smartCoordinatorLayout = new SmartCoordinatorLayout.Builder(this)
+                .buildWithView(rootView)
+                .addSmartComponent(smartFragmentTabLayout)
+                .build();
+
+        smartCoordinatorLayout.setup();
+```
+
+###Complex Usage
+
+Build a [RecyclerView with FAB](https://github.com/lalosoft/SmartCoordinatorLayout/blob/master/app/src/main/java/com/lalosoft/smartcoordinatorlayout/demo/complex/ComplexSmartRecyclerViewFABActivity.java)
+
+```java
+...
+        SmartCoordinatorLayout
+                smartCoordinatorLayout = new SmartCoordinatorLayout.Builder(this)
+                .buildWithView(rootView)
+                .addSmartComponent(smartRecyclerView) // Your SmartRecyclerView
+                .addSmartComponent(new SmartFloatingActionButton(fabListener)) // Your SmartFAB
+                .build();
+
+        smartCoordinatorLayout.setup();
+```
 
 ##License
     Copyright 2016 SmartCoordinatorLayout
