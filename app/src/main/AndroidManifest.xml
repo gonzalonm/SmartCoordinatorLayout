@@ -19,6 +19,8 @@
         <activity android:name=".simple.SimpleSmartRecyclerViewActivity" />
         <activity android:name=".simple.SimpleSmartComponentsActivity" />
         <activity android:name=".simple.SimpleSmartFABActivity" />
+        <activity android:name=".complex.ComplexSmartComponentsActivity" />
+        <activity android:name=".complex.ComplexSmartRecyclerViewFABActivity" />
     </application>
 
 </manifest>

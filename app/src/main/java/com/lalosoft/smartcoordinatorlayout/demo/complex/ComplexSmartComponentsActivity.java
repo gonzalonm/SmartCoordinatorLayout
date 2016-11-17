@@ -7,12 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 
 import com.lalosoft.smartcoordinatorlayout.SmartCoordinatorLayout;
-import com.lalosoft.smartcoordinatorlayout.demo.custom.CustomSmartRecyclerView;
 import com.lalosoft.smartcoordinatorlayout.demo.OnItemSelectedListener;
 import com.lalosoft.smartcoordinatorlayout.demo.R;
 import com.lalosoft.smartcoordinatorlayout.demo.custom.CustomAdapter;
-import com.lalosoft.smartcoordinatorlayout.demo.simple.SimpleSmartFABActivity;
-import com.lalosoft.smartcoordinatorlayout.demo.simple.SimpleSmartTabLayoutActivity;
+import com.lalosoft.smartcoordinatorlayout.demo.custom.CustomSmartRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,8 +22,6 @@ import java.util.List;
 public class ComplexSmartComponentsActivity extends AppCompatActivity {
 
     private static final int ITEM_RECYCLER_VIEW_FAB = 0;
-    private static final int ITEM_FAB = 1;
-    private static final int ITEM_TAB_LAYOUT = 2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,12 +43,6 @@ public class ComplexSmartComponentsActivity extends AppCompatActivity {
                     case ITEM_RECYCLER_VIEW_FAB:
                         openActivity(ComplexSmartRecyclerViewFABActivity.class);
                         break;
-                    case ITEM_FAB:
-                        openActivity(SimpleSmartFABActivity.class);
-                        break;
-                    case ITEM_TAB_LAYOUT:
-                        openActivity(SimpleSmartTabLayoutActivity.class);
-                        break;
                 }
             }
         }));
@@ -69,9 +59,7 @@ public class ComplexSmartComponentsActivity extends AppCompatActivity {
 
     private List<String> createStringList() {
         List<String> list = new ArrayList<>();
-        list.add(getString(R.string.simple_smart_recycler_view));
-        list.add(getString(R.string.simple_smart_floating_action_button));
-        list.add(getString(R.string.simple_smart_tab_layout));
+        list.add(getString(R.string.complex_smart_recycler_fab));
         return list;
     }
 

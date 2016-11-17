@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.ViewGroup;
 
 import com.lalosoft.smartcoordinatorlayout.SmartCoordinatorLayout;
+import com.lalosoft.smartcoordinatorlayout.demo.complex.ComplexSmartComponentsActivity;
 import com.lalosoft.smartcoordinatorlayout.demo.custom.CustomAdapter;
 import com.lalosoft.smartcoordinatorlayout.demo.custom.CustomSmartRecyclerView;
 import com.lalosoft.smartcoordinatorlayout.demo.simple.SimpleSmartComponentsActivity;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                                 openActivity(SimpleSmartComponentsActivity.class);
                                 break;
                             case ITEM_COMPLEX_SMART_COMPONENTS:
-                                // TODO
+                                openActivity(ComplexSmartComponentsActivity.class);
                                 break;
                         }
                     }
