@@ -26,15 +26,23 @@ compile 'lalosoft.android-utilities:smartcoordinatorlayout:1.0.6'
 
 ##Usage
 
-For build SmartCoordinatorLayout, you need to provide a root id of your view. Something like this:
+For build SmartCoordinatorLayout, you **need to provide a root id** of your view. Something like this:
 
 ```java
 ViewGroup rootView = (ViewGroup) findViewById(R.id.activity_base_root);
 ```
 
+For every ```SmartComponent``` the following line does the trick:
+
+```java
+...
+addSmartComponent(smartRecyclerView)
+...
+```
+
 ###Simple Usage
 
-Build a [Simple RecyclerView](https://github.com/lalosoft/SmartCoordinatorLayout/blob/master/app/src/main/java/com/lalosoft/smartcoordinatorlayout/demo/simple/SimpleSmartRecyclerViewActivity.java)
+Build a [Simple RecyclerView](https://github.com/lalosoft/SmartCoordinatorLayout/blob/master/app/src/main/java/com/lalosoft/smartcoordinatorlayout/demo/simple/SimpleSmartRecyclerViewActivity.java). You don't need to declare the ```recyclerView``` tag. You just need use ```SmartRecyclerView``` and provide it an adapter.
 
 ```java
         CustomSmartRecyclerView smartRecyclerView = new CustomSmartRecyclerView(new CustomAdapter(this,
@@ -55,9 +63,11 @@ Build a [Simple RecyclerView](https://github.com/lalosoft/SmartCoordinatorLayout
         smartCoordinatorLayout.setup();
 ```
 
+
 ---
 
-Build a [Simple FAB](https://github.com/lalosoft/SmartCoordinatorLayout/blob/master/app/src/main/java/com/lalosoft/smartcoordinatorlayout/demo/simple/SimpleSmartFABActivity.java)
+
+Build a [Simple FAB](https://github.com/lalosoft/SmartCoordinatorLayout/blob/master/app/src/main/java/com/lalosoft/smartcoordinatorlayout/demo/simple/SimpleSmartFABActivity.java). You need to instance a listener for FAB and provide to SmartCoordinatorLayout an instance of ```SmartFloatingActionButton```.
 
 ```java
         // instances FAB listener
@@ -78,9 +88,41 @@ Build a [Simple FAB](https://github.com/lalosoft/SmartCoordinatorLayout/blob/mas
         smartCoordinatorLayout.setup();
 ```
 
+You can **customize** the FAB, like position, icon. You can instance ```SmartFloatingActionButton``` with the follow constructors:
+
+
+* Changing FAB type
+
+You can choose the type of FAB between: *ADD* or *EDIT*
+```java
+new SmartFloatingActionButton(FABType, fabListener)
+```
+
+
+* Changing FAB position
+
+You can choose the position of FAB between: *BOTTOM_RIGHT*, *TOP_RIGHT*, *BOTTOM_LEFT* and *TOP_LEFT*.
+```java
+new SmartFloatingActionButton(FABPosition, fabListener)
+```
+
+
+* Changing the drawable icon of FAB
+
+You can provide your own drawable in order to display in the FAB
+```java
+new SmartFloatingActionButton(Drawable, fabListener)
+```
+
+* Combine multiple actions
+
+You can combine the above actions to use whatever you want (that's smart!)
+
+
 ---
 
-Build a [Simple TabLayout](https://github.com/lalosoft/SmartCoordinatorLayout/blob/master/app/src/main/java/com/lalosoft/smartcoordinatorlayout/demo/simple/SimpleSmartTabLayoutActivity.java)
+
+Build a [Simple TabLayout](https://github.com/lalosoft/SmartCoordinatorLayout/blob/master/app/src/main/java/com/lalosoft/smartcoordinatorlayout/demo/simple/SimpleSmartTabLayoutActivity.java). You can add multiple tabs with your fragment content of a very easy way.
 
 ```java
         SmartFragmentTabLayout smartFragmentTabLayout = new SmartFragmentTabLayout(getSupportFragmentManager());
@@ -97,6 +139,8 @@ Build a [Simple TabLayout](https://github.com/lalosoft/SmartCoordinatorLayout/bl
 
         smartCoordinatorLayout.setup();
 ```
+
+---
 
 ###Complex Usage
 
