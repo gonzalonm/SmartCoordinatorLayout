@@ -2,6 +2,8 @@
 
 [![CircleCI](https://circleci.com/gh/lalosoft/SmartCoordinatorLayout/tree/master.svg?style=shield)](https://circleci.com/gh/lalosoft/SmartCoordinatorLayout/tree/master)
 
+Another way to use CoordinatorLayout and create fancy views with a couple of lines of code!
+
 ##Installation
 
 ###Gradle
@@ -111,6 +113,10 @@ Build a [RecyclerView with FAB](https://github.com/lalosoft/SmartCoordinatorLayo
 
         smartCoordinatorLayout.setup();
 ```
+
+###Demo
+
+You can [download](https://github.com/lalosoft/SmartCoordinatorLayout/releases/download/v1.0.6/SampleSmartCoordinatorLayout.apk) the apk in order to see the SmartCoordinatorLayout in action
 
 ##License
     Copyright 2016 SmartCoordinatorLayout
