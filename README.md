@@ -158,9 +158,44 @@ Build a [RecyclerView with FAB](https://github.com/lalosoft/SmartCoordinatorLayo
         smartCoordinatorLayout.setup();
 ```
 
+
+---
+
+
+Build a [RecyclerView with FAB using TabLayout](https://github.com/lalosoft/SmartCoordinatorLayout/blob/master/app/src/main/java/com/lalosoft/smartcoordinatorlayout/demo/complex/ComplexSmartRecyclerViewFabTabActivity.java)
+
+```java
+...
+// in your Tab fragment, use the following lines
+SmartCoordinatorLayout
+       smartCoordinatorLayout = new SmartCoordinatorLayout.Builder(getContext())
+       .buildWithView(rootView)
+       .addSmartComponent(smartRecyclerView)
+       .addSmartComponent(new SmartFloatingActionButton(fabListener))
+       .build();
+                
+smartCoordinatorLayout.setup();
+...
+...
+// in your parent view that contains the SmartTabLayout
+SmartFragmentTabLayout smartFragmentTabLayout = new SmartFragmentTabLayout(getSupportFragmentManager());
+smartFragmentTabLayout.addTab(new SmartFragmentTab("TAB1", new RecyclerViewTabFragment()));
+smartFragmentTabLayout.addTab(new SmartFragmentTab("TAB2", TabFragment.newInstance("Tab 2")));
+smartFragmentTabLayout.addTab(new SmartFragmentTab("TAB3", TabFragment.newInstance("Tab 3")));
+
+// build SmartCoordinatorLayout
+SmartCoordinatorLayout
+      smartCoordinatorLayout = new SmartCoordinatorLayout.Builder(this)
+      .buildWithView(rootView)
+      .addSmartComponent(smartFragmentTabLayout)
+      .build();
+
+smartCoordinatorLayout.setup();
+```
+
 ###Demo
 
-You can [download](https://github.com/lalosoft/SmartCoordinatorLayout/releases/download/v1.0.6/SampleSmartCoordinatorLayout.apk) the apk in order to see the SmartCoordinatorLayout in action
+You can [download](https://github.com/lalosoft/SmartCoordinatorLayout/releases/download/v1.0.6/SampleSmartCoordinatorLayout-1.0.6.apk) the apk in order to see the SmartCoordinatorLayout in action
 
 ##License
     Copyright 2016 SmartCoordinatorLayout
