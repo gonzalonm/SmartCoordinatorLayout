@@ -21,6 +21,7 @@
         <activity android:name=".simple.SimpleSmartFABActivity" />
         <activity android:name=".complex.ComplexSmartComponentsActivity" />
         <activity android:name=".complex.ComplexSmartRecyclerViewFABActivity" />
+        <activity android:name=".complex.ComplexSmartRecyclerViewFabTabActivity" />
     </application>
 
 </manifest>

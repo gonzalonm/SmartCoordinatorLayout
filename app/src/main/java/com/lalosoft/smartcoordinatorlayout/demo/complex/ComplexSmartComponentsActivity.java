@@ -22,6 +22,7 @@ import java.util.List;
 public class ComplexSmartComponentsActivity extends AppCompatActivity {
 
     private static final int ITEM_RECYCLER_VIEW_FAB = 0;
+    private static final int ITEM_RECYCLER_VIEW_FAB_TAB = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class ComplexSmartComponentsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_base);
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle(R.string.simple_smart_components);
+            getSupportActionBar().setTitle(R.string.complex_smart_components);
         }
 
         // bind the root of view of this activity
@@ -42,6 +43,9 @@ public class ComplexSmartComponentsActivity extends AppCompatActivity {
                 switch (position) {
                     case ITEM_RECYCLER_VIEW_FAB:
                         openActivity(ComplexSmartRecyclerViewFABActivity.class);
+                        break;
+                    case ITEM_RECYCLER_VIEW_FAB_TAB:
+                        openActivity(ComplexSmartRecyclerViewFabTabActivity.class);
                         break;
                 }
             }
@@ -60,6 +64,7 @@ public class ComplexSmartComponentsActivity extends AppCompatActivity {
     private List<String> createStringList() {
         List<String> list = new ArrayList<>();
         list.add(getString(R.string.complex_smart_recycler_fab));
+        list.add(getString(R.string.complex_smart_recycler_fab_tab));
         return list;
     }
 
