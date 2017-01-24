@@ -7,4 +7,6 @@
     <string name="fab_pressed">FAB pressed!</string>
     <string name="complex_smart_components">ComplexSmartComponents</string>
     <string name="complex_smart_recycler_fab">SmartRecyclerWithFAB</string>
+    <string name="complex_smart_recycler_fab_tab">SmartRecyclerWithFabTab</string>
+    <string name="complex_smart_recycler_fab_tab_title">Complex SmartRecyclerView Fab and Tabs</string>
 </resources>
